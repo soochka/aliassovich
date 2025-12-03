@@ -23,6 +23,17 @@
             --font-heading: 'Rubik', sans-serif;
             --font-body: 'Heebo', sans-serif;
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --bg-dark: #050505;
+            --bg-panel: #111111;
+            --accent-red: #FF3B30;
+            --accent-yellow: #FFD60A;
+            --accent-blue: #00F0FF;
+            --text-primary: #F5F5F7;
+            --text-secondary: #9a9a9e;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --font-display: 'Rubik', sans-serif;
+            --font-body: 'Heebo', sans-serif;
         }
 
         /* --- 2. איפוס בסיסי (Reset) --- */
@@ -352,6 +363,35 @@
         .word-text {
             font-family: var(--font-body); font-weight: 700; font-size: 1.3rem; color: #333;
         }
+         /* --- NEW DICE RULE SECTION --- */
+        .dice-layout {
+            max-width: 800px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+        .dice-box {
+            background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px;
+            text-align: center; border: 1px solid var(--border-subtle);
+        }
+        .dice-box.danger { border-color: var(--accent-red); background: rgba(255, 59, 48, 0.05); }
+        .dice-container {
+            display: flex; gap: 15px; justify-content: center; margin-bottom: 15px;
+        }
+        .die {
+            width: 50px; height: 50px; background: white; border-radius: 10px;
+            color: black; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-weight: bold; font-family: sans-serif;
+            border: 2px solid #ccc;
+        }
+        .die.red { border-color: var(--accent-red); color: var(--accent-red); background: #fff0f0; }
+        .dice-result { font-weight: 700; margin-top: 10px; font-size: 0.95rem; }
+        .move-pill { 
+            display: inline-block; padding: 4px 12px; border-radius: 20px; 
+            font-size: 0.8rem; font-weight: bold; margin-top: 5px;
+        }
+        .move-lucas { background: var(--accent-red); color: white; }
+        .move-player { background: var(--accent-yellow); color: black; }
+        .move-back { background: #333; color: white; border: 1px solid #555; }
+
 
         /* The Difficulty Bubble (Red Circle) */
         .difficulty-bubble {
@@ -483,23 +523,46 @@
                 </ul>
             </div>
 
-            <div class="rule-box fade-in fade-delay-1">
-                <h3>🔄 מהלך התור</h3>
-                <ul>
-                    <li><strong>הסבר מילים:</strong> הופכים שעון חול ומסבירים מילים לפי רמת הקושי של המשבצת (מ, א, י, ה).</li>
-                    <li><strong>התקדמות הקבוצה:</strong> זזים קדימה מספר צעדים כמספר המילים שנוחשו.</li>
-                    <li><strong>התקדמות לוקאס:</strong> בסיום התור, לוקאס מתקדם לפי האות בה הוא נמצא:
-                        <div class="letters-row">
-                            <span class="letter-badge">מ = 1</span>
-                            <span class="letter-badge">א = 2</span>
-                            <span class="letter-badge">י = 3</span>
-                            <span class="letter-badge">ה = 4</span>
-                        </div>
-                    </li>
-                    <li><strong>הפתעה:</strong> נחיתה על משבצת הפתעה = שליפת קלף בסוף התור.</li>
-                </ul>
+                <section id="dice-rule" class="vis-section">
+        <h2 class="section-title">חוק <span class="text-yellow">זוג הקוביות</span></h2>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: var(--text-secondary);">
+            בסוף כל תור, לוקאס מטיל 2 קוביות. התוצאה תקבע האם הוא סוגר עליכם, או שאתם בצרות צרורות.
+        </p>
+
+        <div class="dice-layout fade-in">
+            <div class="dice-box">
+                <div class="dice-container">
+                    <div class="die">2</div>
+                    <div class="die">5</div>
+                </div>
+                <h4>גלגול רגיל</h4>
+                <div class="dice-result">
+                    <span class="move-pill move-lucas">לוקאס: +7 צעדים</span>
+                    <br>
+                    <span class="move-pill" style="background:transparent; color:#666">השחקן: ללא שינוי</span>
+                </div>
+                <p style="font-size: 0.85rem; color: #888; margin-top: 10px;">לוקאס מתקדם לפי סכום הקוביות בלבד.</p>
             </div>
 
+            <div class="dice-box danger">
+                <div class="dice-container">
+                    <div class="die red">3</div>
+                    <div class="die red">3</div>
+                </div>
+                <h4 class="text-red">יצא דאבל!</h4>
+                <div class="dice-result">
+                    <span class="move-pill move-lucas">לוקאס: +6 צעדים</span>
+                    <br>
+                    <span class="move-pill move-back">השחקן: -3 צעדים</span>
+                </div>
+                <p style="font-size: 0.85rem; color: #ffbaba; margin-top: 10px;">
+                    זהות? השחקן חוזר אחורה לפי המספר שעל הקובייה.
+                </p>
+            </div>
+        </div>
+    </section>
+
+            
             <div class="rule-box fade-in fade-delay-2">
                 <h3>⚠ מצבים מיוחדים</h3>
                 <div class="win-loss-container">
