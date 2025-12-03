@@ -82,6 +82,25 @@
             border-bottom: 1px solid var(--glass-border);
             transition: var(--transition);
         }
+        
+        .nav-btn {
+            padding: 10px 25px;
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--neon-red);
+            border-color: var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+            transform: translateY(-2px);
+        }
 
         .logo { 
             font-weight: 900; 
@@ -153,7 +172,7 @@
         .hero-title strong {
             display: block;
             color: transparent;
-            background: linear-gradient(to bottom, #fff, #aaa);
+            background: linear-gradient(to bottom, #fff, #fbff00);
             -webkit-background-clip: text;
             text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
@@ -524,7 +543,6 @@
         <div class="cards-wrapper">
             <div class="card-container fade-in">
                 <div class="game-card">
-                    <div style="width:100%; height:100%; background: #222; display: flex; align-items: center; justify-content: center; color: #444;">תמונה</div>
                     <img src="lucas.png" alt="אש לחילוץ" class="card-img" onerror="this.style.display='none'">
                 </div>
                 <div class="card-description-label">אש לחילוץ</div>
@@ -533,7 +551,6 @@
 
             <div class="card-container fade-in">
                 <div class="game-card">
-                     <div style="width:100%; height:100%; background: #222; display: flex; align-items: center; justify-content: center; color: #444;">תמונה</div>
                      <img src="dilug.png" alt="אין דילוג" class="card-img" onerror="this.style.display='none'">
                 </div>
                 <div class="card-description-label">אין דילוג</div>
@@ -542,7 +559,7 @@
 
             <div class="card-container fade-in">
                 <div class="game-card">
-                    <div style="width:100%; height:100%; background: #222; display: flex; align-items: center; justify-content: center; color: #444;">תמונה</div>
+                  
                     <img src="otzma.png" alt="איזו עוצמה" class="card-img" onerror="this.style.display='none'">
                 </div>
                 <div class="card-description-label">איזו עוצמה</div>
@@ -550,8 +567,7 @@
             </div>
 
              <div class="card-container fade-in">
-                <div class="game-card">
-                    <div style="width:100%; height:100%; background: #222; display: flex; align-items: center; justify-content: center; color: #444;">תמונה</div>
+                <div class="game-card">      
                     <img src="aliaswitch.png" alt="אליאסוויץ'" class="card-img" onerror="this.style.display='none'">
                 </div>
                 <div class="card-description-label">אליאסוויץ'</div>
@@ -623,9 +639,9 @@
 
     <footer>
         <div class="logo" style="justify-content: center; margin-bottom: 20px;">אליאס<span>וביץ</span></div>
-        <p style="color: #666; font-size: 0.9rem;">© 2025 כל הזכויות שמורות.</p>
+        <p style="color: #666; font-size: 0.9rem;">©  כל הזכויות שמורות לעופריקוש, מוגש באהבה לאהבת חיי - מאיה אברמוביץ.</p>
         <div style="margin-top: 25px;">
-            <a href="#" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--neon-yellow); padding-bottom: 2px;">חזרה למעלה</a>
+            <a href="#" style="color: var(--text-muted); text-decoration: none; border-bottom: 2px solid var(--neon-yellow); padding-bottom: 2px;">חזרה למעלה</a>
         </div>
     </footer>
 
